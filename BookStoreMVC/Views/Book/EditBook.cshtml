@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = Model.Book.Title;
+}
+@model UpdateBookViewModel
+
+<div>
+    <a href="@Url.Action("Book", "Book", new {id = Model.Book.Id})" class="btn btn-secondary">Back</a>
+    <br>
+    <a href="@Url.Action("EditAuthors", "Book", new {id = Model.Book.Id})" class="btn btn-success">Edit book's authors</a>
+    <p>Author(s): @foreach(var item in Model.Authors)
+        {
+            <a href="@Url.Action("Author", "Author", new {id = item.Id})">@item.Name</a>
+        }</p>
+        <a href="@Url.Action("EditGenres", "Book", new {id = Model.Book.Id})" class="btn btn-success">Edit book's genres</a>
+    <p>Genre(s): @foreach(var item in Model.Genres)
+        {
+            <a href="@Url.Action("Genre", "Genre", new {id = item.Id})">@item.Name</a>
+        }</p>
+    <form asp-action="EditBook" asp-controller="Book" method="post" enctype="multipart/form-data">
+        <label asp-for="@Model.Book.Id"></label>
+        <input asp-for="@Model.Book.Id" readonly />
+        <br />
+        <label asp-for="@Model.Book.Title"></label>
+        <input asp-for="@Model.Book.Title" />
+        <br />
+        <label asp-for="@Model.Book.Price"></label>
+        <input asp-for="@Model.Book.Price" />
+        <br />
+        <label asp-for="@Model.Book.Pages"></label>
+        <input asp-for="@Model.Book.Pages" />
+        <br />
+        <label asp-for="@Model.Book.Description"></label>
+        <input asp-for="@Model.Book.Description" />
+        <br />
+        <button type="submit" name="Submit">Edit</button>
+    </form>
+</div>
+

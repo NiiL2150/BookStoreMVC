@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Books";
+}
+@model ISearchBySomeBookViewModel
+
+<style>
+div{
+    overflow: hidden;
+}
+</style>
+
+<div class="row">
+    <a class="btn btn-primary" href="@Url.Action("AddBook", "Book")">Add book</a>
+    @if(Model.SearchBy != ""){
+        <h2>@Model.SearchBy: @Model.SearchValue</h2>
+    }
+    @if(Model.Count == 0){
+        <h3>No books were found</h3>
+    }
+    else
+    {
+        @if (Model.Count == 1)
+        {
+            <h3>1 book was found</h3>
+        }
+        else
+        {
+            <h3>@Model.Count books were found</h3>
+        }
+    @foreach(var item in Model.Items)
+    {
+         <div class="card col col-12 col-md-6 col-lg-4 col-xl-3 p-1">
+            <div class="card-body">
+                <h5 class="card-title">@item.Title</h5>
+                <p class="card-text">@item.Price$</p>
+                <p class="card-text">@item.Pages pages</p>
+                <a class="btn btn-primary" href="@Url.Action("Book", "Book", new {id=item.Id})">View more</a>
+                <a href="@Url.Action("DeleteBook", "Book", new {id = item.Id})" class="btn btn-danger">Delete book</a>
+                <br>
+            </div>
+        </div>
+    }
+    }
+</div>

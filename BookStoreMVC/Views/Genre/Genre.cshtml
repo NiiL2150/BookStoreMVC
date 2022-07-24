@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = Model.Name;
+}
+@model Genre
+
+<div>
+    <h1>@Model.Name</h1>
+    <a class="btn btn-secondary" href="@Url.Action("BookGenre", "Book", new {id=Model.Id})">View books</a>
+    <a href="@Url.Action("EditGenre", "Genre", new {id = Model.Id})" class="btn btn-primary">Edit genre</a>
+    <a href="@Url.Action("DeleteGenre", "Genre", new {id = Model.Id})" class="btn btn-danger">Delete genre</a>
+</div>
+

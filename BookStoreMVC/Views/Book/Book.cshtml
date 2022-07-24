@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = Model.Book.Title;
+}
+@model UpdateBookViewModel
+
+<div>
+    <h1>@Model.Book.Title</h1>
+    <a href="@Url.Action("EditBook", "Book", new {id = Model.Book.Id})" class="btn btn-primary">Edit book</a>
+    <a href="@Url.Action("DeleteBook", "Book", new {id = Model.Book.Id})" class="btn btn-danger">Delete book</a>
+    <br />
+    <p>@Model.Book.Price$</p>
+    <p>@Model.Book.Pages pages</p>
+    <p>Author(s): @foreach(var item in Model.Authors)
+        {
+            <a href="@Url.Action("Author", "Author", new {id = item.Id})">@item.Name</a>
+        }</p>
+    <p>Genre(s): @foreach(var item in Model.Genres)
+        {
+            <a href="@Url.Action("Genre", "Genre", new {id = item.Id})">@item.Name</a>
+        }</p>
+    <p>@Model.Book.Description</p>
+</div>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Add book";
+}
+@model Book
+
+<div class="text-center">
+    <form asp-action="AddBook" asp-controller="Book" method="post" enctype="multipart/form-data">
+        <label asp-for="@Model.Title"></label>
+        <input asp-for="@Model.Title" />
+        <br />
+        <label asp-for="@Model.Price">Price (format: "xx,xx")</label>
+        <input asp-for="@Model.Price" />
+        <br />
+        <label asp-for="@Model.Pages"></label>
+        <input asp-for="@Model.Pages" />
+        <br />
+        <label asp-for="@Model.Description"></label>
+        <input asp-for="@Model.Description" />
+        <br />
+        <button type="submit" name="Submit">Add</button>
+    </form>
+</div>

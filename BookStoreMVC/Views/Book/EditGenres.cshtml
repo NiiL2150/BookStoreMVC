@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = Model.Book.Title;
+}
+@model EditGenresViewModel
+
+<div class="row">
+    <a href="@Url.Action("EditBook", "Book", new {id = Model.Book.Id})" class="btn btn-secondary">Back</a>
+    <h1>@Model.Book.Title</h1>
+    <h2>Book genres:</h2>
+    @foreach(var item in Model.BookGenres)
+    {
+        <div class="card col col-12 col-md-6 col-lg-4 col-xl-3 p-1">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <a class="btn btn-primary" href="@Url.Action("Genre", "Genre", new {id=item.Id})">View more</a>
+                <a href="@Url.Action("DeleteGenre", "Book", new {id = Model.Book.Id, genreId = item.Id})" class="btn btn-danger">Delete genre</a>
+                <br>
+            </div>
+        </div>
+    }
+    <br />
+    <hr />
+    <br />
+    <h2>Other genres:</h2>
+    @foreach(var item in Model.NonGenres)
+    {
+        <div class="card col col-12 col-md-6 col-lg-4 col-xl-3 p-1">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <a class="btn btn-primary" href="@Url.Action("Genre", "Genre", new {id=item.Id})">View more</a>
+                <a href="@Url.Action("AddGenre", "Book", new {id = Model.Book.Id, genreId = item.Id})" class="btn btn-secondary">Add genre</a>
+                <br>
+            </div>
+        </div>
+    }
+</div>

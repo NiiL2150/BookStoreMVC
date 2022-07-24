@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Add genre";
+}
+@model Genre
+
+<div class="text-center">
+    <form asp-action="EditGenre" asp-controller="Genre" method="post" enctype="multipart/form-data">
+        <label asp-for="@Model.Id"></label>
+        <input asp-for="@Model.Id" readonly />
+        <br />
+        <label asp-for="@Model.Name"></label>
+        <input asp-for="@Model.Name" />
+        <br />
+        <button type="submit" name="Submit">Edit</button>
+    </form>
+</div>
